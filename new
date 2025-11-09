@@ -1,0 +1,81 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Grocery Tracker</title>
+<style> body {
+font-family: Arial, sans-serif; background-color: #fafafa; margin: 20px;
+}
+h1, h2 {
+text-align: center;
+color: #333; }
+table {
+width: 100%; border-collapse: collapse; margin-bottom: 30px;
+}
+th, td {
+border: 1px solid #ccc; padding: 8px; text-align: center;
+}
+th {
+background-color: #f0f0f0; }
+td:first-child {
+text-align: left; }
+.add-item {
+display: flex; justify-content: center; margin-bottom: 20px;
+}
+.add-item input {
+padding: 8px; width: 200px; margin-right: 10px;
+}
+.add-item button {
+padding: 8px 15px; background-color: #28a745; color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+.add-item button:hover {
+background-color: #218838; }
+</style>
+
+ </head> <body>
+<h1>🛒 Grocery Tracker</h1>
+<!-- PANTRY SECTION --> <h2>Pantry Items</h2> <div class="add-item">
+<input type="text" id="newPantryItem" placeholder="Add pantry item...">
+<button onclick="addItem('pantryTable', 'newPantryItem')">Add</button> </div>
+<table id="pantryTable"> <tr>
+<th>Item</th> <th>On Hand</th> <th>Need</th> <th>Want</th>
+</tr> <tr>
+<td>Oatmeal</td>
+<td><input type="checkbox"></td> <td><input type="checkbox"></td> <td><input type="checkbox"></td>
+</tr> <tr>
+<td>Beans</td>
+<td><input type="checkbox"></td> <td><input type="checkbox"></td> <td><input type="checkbox"></td>
+</tr> <tr>
+<td>Apples</td>
+<td><input type="checkbox"></td> <td><input type="checkbox"></td> <td><input type="checkbox"></td>
+</tr> </table>
+<!-- COLD STORAGE SECTION -->
+<h2>Cold Storage (Dairy, Meat, Fruits & Veggies)</h2> <div class="add-item">
+<input type="text" id="newColdItem" placeholder="Add cold storage item...">
+<button onclick="addItem('coldTable', 'newColdItem')">Add</button> </div>
+<table id="coldTable"> <tr>
+<th>Item</th> <th>On Hand</th> <th>Need</th> <th>Want</th>
+</tr>
+ 
+ <tr>
+<td>Milk</td>
+<td><input type="checkbox"></td> <td><input type="checkbox"></td> <td><input type="checkbox"></td>
+</tr> <tr>
+<td>Cottage Cheese</td> <td><input type="checkbox"></td> <td><input type="checkbox"></td> <td><input type="checkbox"></td>
+</tr> <tr>
+<td>Green Tea</td>
+<td><input type="checkbox"></td> <td><input type="checkbox"></td> <td><input type="checkbox"></td>
+</tr> </table>
+<script>
+function addItem(tableId, inputId) {
+const input = document.getElementById(inputId); const table = document.getElementById(tableId); const itemName = input.value.trim();
+if (itemName !== "") {
+const row = table.insertRow(-1); const cell1 = row.insertCell(0); const cell2 = row.insertCell(1); const cell3 = row.insertCell(2); const cell4 = row.insertCell(3);
+cell1.textContent = itemName; cell2.innerHTML = '<input type="checkbox">'; cell3.innerHTML = '<input type="checkbox">'; cell4.innerHTML = '<input type="checkbox">';
+input.value = ""; } else {
+alert("Please enter an item name first."); }
+} </script>
+</body> </html>
